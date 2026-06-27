@@ -7,7 +7,7 @@ const page = () => {
         <div>
             <NavbarAdmin/>
             <div className='min-h-screen flex items-center justify-center bg-[#f5f5f0]'>
-                <h1 className='text-black'>Usuarios</h1>
+                <h1 className='text-black'>Usuariosss</h1>
             </div>
         </div>
     )
