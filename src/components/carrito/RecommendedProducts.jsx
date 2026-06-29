@@ -5,7 +5,7 @@ import { Heart, ShoppingCart, Star, Truck } from "lucide-react";
 const productos = [
   {
     id: 1,
-    nombre: "Apple Watch Series 10",
+    nombre: "Apple Watch Series 10000000",
     precio: 11999,
     descuento: "10%",
     rating: 4.9,
