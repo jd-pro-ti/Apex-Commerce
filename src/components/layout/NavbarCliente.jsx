@@ -20,20 +20,36 @@ export function NavbarCliente() {
   const { user, logout, mounted } = useAuth();
 
   const navLinks = [
+<<<<<<< HEAD
     { href: "/cliente/catalogo", label: "Catálogo", icon: LayoutGrid },
     { href: "/cliente/producto", label: "Detalle de Producto (Modal)", icon: Package },
     { href: "/cliente/wishlist", label: "Lista de Deseos", icon: Heart },
     { href: "/cliente/perfil", label: "Mi Perfil", icon: User },
     { href: "/cliente/pagos", label: "Historial de Pagos", icon: CreditCard },
   ];
+=======
+  { href: "/dashboard/cliente", label: "Dashboard", icon: User },
+  { href: "/dashboard/cliente/pedidos", label: "Mis Pedidos", icon: Package },
+  { href: "/dashboard/cliente/wishlist", label: "Lista de Deseos", icon: Heart },
+  { href: "/dashboard/cliente/carrito", label: "carrito", icon: ShoppingBag },
+  { href: "/dashboard/cliente/perfil", label: "Perfil", icon: Settings },
+];
+>>>>>>> e2f34acb4a48da854f1a366520ebb26a5f5ab8c1
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-neutral/20">
       <div className="w-[90%] max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20 md:h-24">
+<<<<<<< HEAD
           <Link href="/dashboard/cliente" className="flex items-center shrink-0">
             <span className="font-headline text-xl md:text-2xl font-semibold tracking-[0.2em] text-primary">
               APEX<span className="text-tertiary">COMMERCE</span>
+=======
+          {/* Logo */}
+          <Link href="/dashboard/cliente" className="flex items-center shrink-0">
+            <span className="text-xl md:text-2xl font-light tracking-[0.3em] text-[#0a0a0a]">
+              APEX<span className="font-normal text-[#c9a84c]">COMMERCE</span>
+>>>>>>> e2f34acb4a48da854f1a366520ebb26a5f5ab8c1
             </span>
             <span className="ml-3 px-3 py-1 bg-whatsapp text-white text-[10px] font-label tracking-[0.1em] uppercase rounded-tl-lg">
               Cliente
