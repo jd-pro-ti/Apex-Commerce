@@ -10,19 +10,19 @@ export function NavbarCliente() {
   const { logout } = useAuth();
 
   const navLinks = [
-    { href: "/dashboard/cliente", label: "Dashboard", icon: User },
-    { href: "/dashboard/cliente/pedidos", label: "Mis Pedidos", icon: Package },
-    { href: "/cliente/wishlist", label: "Lista de Deseos", icon: Heart },
-    { href: "/cliente/carrito", label: "Carrito", icon: ShoppingBag },
-    { href: "/cliente/perfil", label: "Perfil", icon: Settings },
-  ];
+  { href: "/dashboard/cliente", label: "Dashboard", icon: User },
+  { href: "/dashboard/cliente/pedidos", label: "Mis Pedidos", icon: Package },
+  { href: "/dashboard/cliente/wishlist", label: "Lista de Deseos", icon: Heart },
+  { href: "/dashboard/cliente/carrito", label: "carrito", icon: ShoppingBag },
+  { href: "/dashboard/cliente/perfil", label: "Perfil", icon: Settings },
+];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#e8e6e3]">
       <div className="w-[90%] max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
-          <Link href="/cliente" className="flex items-center shrink-0">
+          <Link href="/dashboard/cliente" className="flex items-center shrink-0">
             <span className="text-xl md:text-2xl font-light tracking-[0.3em] text-[#0a0a0a]">
               APEX<span className="font-normal text-[#c9a84c]">COMMERCE</span>
             </span>
