@@ -1,15 +1,12 @@
-import React from 'react'
-import { NavbarCliente } from '@/components/layout/NavbarCliente'  
+import { NavbarCliente } from "@/components/layout/NavbarCliente";
 
-const pedidosCliente = () => {
-    return (
-        <div>
-            <NavbarCliente />  
-            <div className='min-h-screen flex items-center justify-center bg-[#f5f5f0]'>
-                <h1 className='text-black'>Mis Pedidos CambioErandy</h1>
-            </div>
-        </div>
-    )
+export default function PedidosClientePage() {
+  return (
+    <div>
+      <NavbarCliente />
+      <div className="min-h-screen flex items-center justify-center bg-off-white pt-28">
+        <h1 className="font-headline text-primary">Mis Pedidos</h1>
+      </div>
+    </div>
+  );
 }
-
-export default pedidosCliente

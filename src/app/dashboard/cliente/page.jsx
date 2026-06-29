@@ -7,7 +7,7 @@ import { Package, Heart, ShoppingBag, User } from "lucide-react";
 import Link from "next/link";
 
 export default function ClienteDashboard() {
-  const { user } = useAuth();
+  const { user, mounted } = useAuth();
 
   const stats = [
     { label: "Pedidos", value: "12", icon: Package },
@@ -19,12 +19,13 @@ export default function ClienteDashboard() {
   return (
     <>
       <NavbarCliente />
-      <main className="pt-28 pb-12 bg-[#f5f5f0] min-h-screen">
+      <main className="pt-28 pb-12 bg-off-white min-h-screen">
         <Container>
           <div className="mb-8">
-            <h1 className="text-3xl font-light">Mi Cuenta</h1>
-            <p className="text-[#6b6b6b] font-light">
-              Bienvenido, {user?.name} · Rol: {user?.role}
+            <h1 className="font-headline text-3xl font-semibold text-primary">Mi Cuenta</h1>
+            <p className="text-neutral font-body">
+              Bienvenido, {mounted ? (user?.name ?? "Usuario") : "Usuario"} · Rol:{" "}
+              {mounted ? (user?.role ?? "cliente") : "cliente"}
             </p>
           </div>
 
@@ -34,36 +35,35 @@ export default function ClienteDashboard() {
               return (
                 <div key={index} className="bg-white p-6 shadow-sm">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-light text-[#6b6b6b]">{stat.label}</span>
-                    <Icon className="h-5 w-5 text-[#c9a84c]" />
+                    <span className="font-label text-sm text-neutral">{stat.label}</span>
+                    <Icon className="h-5 w-5 text-tertiary" />
                   </div>
-                  <p className="text-2xl font-light">{stat.value}</p>
+                  <p className="font-headline text-2xl font-semibold text-primary">{stat.value}</p>
                 </div>
               );
             })}
           </div>
 
           <div className="mt-8 p-8 bg-white shadow-sm">
-            <h2 className="text-xl font-light mb-4">Acceso Cliente</h2>
-            <p className="text-[#6b6b6b] font-light">
+            <h2 className="font-headline text-xl font-semibold text-primary mb-4">Acceso Cliente</h2>
+            <p className="text-neutral font-body">
               Esta es una vista de prueba para el rol de Cliente.
               Puedes ver tus pedidos, lista de deseos y gestionar tu perfil.
             </p>
             <div className="mt-4 flex gap-2">
-              <span className="inline-block px-3 py-1 bg-[#0a0a0a] text-white text-xs font-light tracking-[0.1em] uppercase">
+              <span className="inline-block px-3 py-1 bg-whatsapp text-white font-label text-xs tracking-[0.1em] uppercase">
                 Cliente
               </span>
-              <span className="inline-block px-3 py-1 bg-[#c9a84c] text-white text-xs font-light tracking-[0.1em] uppercase">
+              <span className="inline-block px-3 py-1 bg-tertiary text-secondary font-label text-xs tracking-[0.1em] uppercase">
                 Customer Access
               </span>
             </div>
           </div>
 
-          {/* Botón para ir a la tienda pública */}
           <div className="mt-8">
             <Link
               href="/"
-              className="inline-flex items-center text-sm font-light text-[#6b6b6b] hover:text-[#0a0a0a] transition-colors"
+              className="inline-flex items-center font-body text-sm text-neutral hover:text-primary transition-colors"
             >
               ← Volver a la tienda
             </Link>
