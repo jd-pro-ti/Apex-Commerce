@@ -9,7 +9,9 @@ import {
   Upload,
   Eye,
   Plus,
+  ArrowLeft,
   X,
+  ChevronRight,
 } from "lucide-react";
 import { NavbarVendedor } from "@/components/layout/NavbarVendedor";
 
@@ -18,7 +20,7 @@ const productData = {
   id: 1,
   title: "Patek Philippe Nautilus 5711/1A-010 Blue Dial",
   description:
-    "The Patek Philippe Nautilus 5711/1A-010 is the ultimate luxury sports watch. Featuring the iconic rounded octagonal bezel, ingenious porthole construction of its case, and horizontally embossed dial, the Nautilus has been the epitome of the elegant sports watch since 1976. This specific model features the sought-after blue gradient dial and stainless steel integrated bracelet.",
+    "El Patek Philippe Nautilus 5711/1A-010 es el reloj deportivo de lujo definitivo. Con su icónico bisel octogonal redondeado, la ingeniosa construcción de caja tipo oporto y su esfera con relieve horizontal, el Nautilus ha sido la personificación del reloj deportivo elegante desde 1976. Este modelo específico presenta la cotizada esfera degradada azul y un brazalete integrado de acero inoxidable.",
   price: 145000,
   stock: 1,
   sku: "PP-5711-BLU-001",
@@ -27,9 +29,9 @@ const productData = {
   subCategory: "Artículos de Lujo",
   visibility: "Público",
   images: [
-    "https://picsum.photos/seed/patek1/200/200",
-    "https://picsum.photos/seed/patek2/200/200",
-    "https://picsum.photos/seed/patek3/200/200",
+    "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=300&auto=format&fit=crop&q=80", 
+    "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=300&auto=format&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=300&auto=format&fit=crop&q=80",
   ],
   shipping: {
     standard: 0,
@@ -86,172 +88,236 @@ export default function EditarProductoPage() {
   return (
     <>
       <NavbarVendedor />
-      <main className="pt-28 pb-12 bg-[var(--off-white)] min-h-screen">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-sm font-opensans text-[var(--medium-gray)] mb-4">
-            <Link href="/dashboard/vendedor/productos" className="hover:text-[var(--black)] transition">
-              Productos
+      
+      <main className="min-h-screen bg-[#f8f9fa] pt-28 pb-12">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          
+          {/* Enlace superior Atrás */}
+          <div className="mb-4">
+            <Link 
+              href="/dashboard/vendedor/productos" 
+              className="flex items-center gap-1 text-xs font-semibold tracking-wider text-slate-500 uppercase hover:text-slate-800 transition"
+            >
+              <ArrowLeft className="h-3 w-3" /> Volver a productos
             </Link>
-            <span>/</span>
-            <span className="text-[var(--black)]">Editar Producto</span>
           </div>
 
-          {/* Encabezado */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
+          {/* Encabezado Principal */}
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between border-b border-slate-100 pb-6 mb-8 gap-4">
             <div>
-              <h1 className="text-3xl font-montserrat font-light text-[var(--black)] tracking-tight">
-                {formData.title}
+              <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
+                {formData.title || "Sin título"}
               </h1>
-              <p className="text-[var(--medium-gray)] font-opensans text-sm mt-1">
-                Modifica las especificaciones, precios y disponibilidad de este reloj de lujo.{" "}
-                <span className="text-[var(--medium-gray)]/60">Última actualización: hace 2 horas.</span>
+              <p className="text-slate-400 text-sm mt-1">
+                Modifica las especificaciones, cotización de precios y logística de este activo de alta gama.{" "}
+                <span className="text-slate-400/60 font-medium">Última edición: hace 2 horas.</span>
               </p>
             </div>
-            <button className="flex items-center gap-2 px-5 py-2.5 border border-[var(--lighter-gray)] rounded-xl bg-[var(--white)] hover:bg-[var(--off-white)] transition font-opensans text-sm text-[var(--black)] whitespace-nowrap">
-              <Eye className="h-4 w-4" />
-              Ver publicación en vivo
+            <button className="flex items-center gap-2 px-4 py-2.5 border border-slate-200 bg-white rounded-xl hover:bg-slate-50 transition text-sm font-medium text-slate-700 shadow-sm self-start md:self-auto">
+              <Eye className="h-4 w-4 text-slate-500" />
+              Ver Publicación en Vivo
             </button>
           </div>
 
-          {/* Formulario con grid de 2 columnas */}
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+          {/* Formulario Estructurado en Dos Columnas */}
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
             
-            {/* === Columna 1 === */}
-
-            {/* Información General */}
-            <div className="bg-[var(--white)] rounded-3xl shadow-sm border border-[var(--lighter-gray)] p-6 md:p-8">
-              <h3 className="text-lg font-montserrat font-semibold text-[var(--black)] mb-6">
-                Información General
-              </h3>
-              <div className="mb-5">
-                <label
-                  htmlFor="title"
-                  className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                >
-                  TÍTULO DEL PRODUCTO
-                </label>
-                <input
-                  id="title"
-                  name="title"
-                  type="text"
-                  value={formData.title}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] placeholder-[var(--medium-gray)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="description"
-                  className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                >
-                  DESCRIPCIÓN
-                </label>
-                <textarea
-                  id="description"
-                  name="description"
-                  rows={4}
-                  value={formData.description}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] placeholder-[var(--medium-gray)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition resize-y"
-                />
-              </div>
-            </div>
-
-            {/* Imágenes del Producto */}
-            <div className="bg-[var(--white)] rounded-3xl shadow-sm border border-[var(--lighter-gray)] p-6 md:p-8">
-              <h3 className="text-lg font-montserrat font-semibold text-[var(--black)] mb-4">
-                Imágenes del Producto
-              </h3>
-              <div className="flex flex-wrap items-center gap-4">
-                {formData.images.map((img, index) => (
-                  <div
-                    key={index}
-                    className="relative w-20 h-20 rounded-lg overflow-hidden border border-[var(--lighter-gray)] group"
-                  >
-                    <img
-                      src={img}
-                      alt={`Producto ${index + 1}`}
-                      className="w-full h-full object-cover"
+            {/* COLUMNA IZQUIERDA (2/3 de ancho) - Detalles Básicos, Multimedia y Logística */}
+            <div className="lg:col-span-2 space-y-6">
+              
+              {/* Bloque: Detalles Generales */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-6">
+                  Información Básica
+                </h3>
+                
+                <div className="space-y-5">
+                  <div>
+                    <label htmlFor="title" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Título Comercial del Producto
+                    </label>
+                    <input
+                      id="title"
+                      name="title"
+                      type="text"
+                      value={formData.title}
+                      onChange={handleChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-300 font-medium"
                     />
-                    <button
-                      type="button"
-                      className="absolute top-1 right-1 p-0.5 bg-red-500 text-white rounded-full hover:bg-red-600 transition opacity-0 group-hover:opacity-100"
-                      onClick={() => {
-                        setFormData((prev) => ({
-                          ...prev,
-                          images: prev.images.filter((_, i) => i !== index),
-                        }));
-                      }}
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
                   </div>
-                ))}
-                <label className="flex items-center gap-2 px-5 py-2.5 border border-[var(--lighter-gray)] rounded-xl bg-[var(--white)] hover:bg-[var(--off-white)] transition cursor-pointer font-opensans text-sm text-[var(--black)]">
-                  <Upload className="h-4 w-4" />
-                  Subir
-                  <input type="file" accept="image/*" className="hidden" />
-                </label>
-                <button
-                  type="button"
-                  className="flex items-center gap-2 px-5 py-2.5 border border-[var(--lighter-gray)] rounded-xl bg-[var(--white)] hover:bg-[var(--off-white)] transition font-opensans text-sm text-[var(--black)]"
-                >
-                  <Plus className="h-4 w-4" />
-                  Agregar imagen
-                </button>
+                  
+                  <div>
+                    <label htmlFor="description" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Descripción de la Pieza (Narrativa de Lujo)
+                    </label>
+                    <textarea
+                      id="description"
+                      name="description"
+                      rows={5}
+                      value={formData.description}
+                      onChange={handleChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:border-slate-300 font-medium resize-none leading-relaxed"
+                    />
+                  </div>
+                </div>
               </div>
+
+              {/* Bloque: Galería Multimedia */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                  Galería de Imágenes
+                </h3>
+                
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 items-center">
+                  {formData.images.map((img, index) => (
+                    <div
+                      key={index}
+                      className="relative aspect-square rounded-xl overflow-hidden border border-slate-100 bg-slate-50 shadow-sm group"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={img}
+                        alt={`Producto ${index + 1}`}
+                        className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+                      />
+                      <button
+                        type="button"
+                        className="absolute top-2 right-2 p-1.5 bg-slate-900/80 text-white rounded-full hover:bg-red-600 backdrop-blur-sm transition opacity-0 group-hover:opacity-100 shadow"
+                        onClick={() => {
+                          setFormData((prev) => ({
+                            ...prev,
+                            images: prev.images.filter((_, i) => i !== index),
+                          }));
+                        }}
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </div>
+                  ))}
+                  
+                  {/* Botón de carga/acción */}
+                  <label className="aspect-square border-2 border-dashed border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-slate-50 rounded-xl flex flex-col items-center justify-center gap-2 cursor-pointer transition text-slate-500">
+                    <Upload className="h-5 w-5 text-slate-400" />
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">Subir</span>
+                    <input type="file" accept="image/*" className="hidden" />
+                  </label>
+                </div>
+              </div>
+
+              {/* Bloque: Logística de Envío */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 md:p-8 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  Esquema de Distribución y Envío
+                </h3>
+                <p className="text-xs text-slate-400 mb-6">
+                  Tasas logísticas calculadas dinámicamente con base en las dimensiones y valor de seguro de bóveda.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="standard" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Envío Terrestre Estándar
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">$</span>
+                      <input
+                        id="standard"
+                        name="standard"
+                        type="number"
+                        step="0.01"
+                        value={formData.shipping.standard}
+                        onChange={handleShippingChange}
+                        className="w-full pl-8 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-slate-300"
+                      />
+                    </div>
+                    <span className="text-[10px] text-emerald-600 font-bold tracking-wide uppercase mt-1.5 block">
+                      ✓ Configurado como libre de cargo
+                    </span>
+                  </div>
+
+                  <div>
+                    <label htmlFor="express" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Servicio Express Asegurado
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">$</span>
+                      <input
+                        id="express"
+                        name="express"
+                        type="number"
+                        step="0.01"
+                        value={formData.shipping.express}
+                        onChange={handleShippingChange}
+                        className="w-full pl-8 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-slate-300"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
-            {/* Precio e Inventario */}
-            <div className="bg-[var(--white)] rounded-3xl shadow-sm border border-[var(--lighter-gray)] p-6 md:p-8">
-              <h3 className="text-lg font-montserrat font-semibold text-[var(--black)] mb-6">
-                Precio e Inventario
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {/* COLUMNA DERECHA (1/3 de ancho) - Fijación de Precios, Gestión de Inventario y Controles */}
+            <div className="space-y-6">
+              
+              {/* Tarjeta: Gestión Comercial */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4">
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  Precios e Inventario
+                </h3>
+
                 <div>
-                  <label
-                    htmlFor="price"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    PRECIO (USD)
+                  <label htmlFor="price" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                    Precio de Salida (USD)
                   </label>
                   <div className="relative">
-                    <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--medium-gray)] font-opensans">
-                      $
-                    </span>
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">$</span>
                     <input
                       id="price"
                       name="price"
                       type="number"
                       value={formData.price}
                       onChange={handleChange}
-                      className="w-full pl-8 pr-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
+                      className="w-full pl-8 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-bold text-slate-800 focus:outline-none focus:border-slate-300"
                     />
                   </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="stock"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    CANTIDAD EN STOCK
-                  </label>
-                  <input
-                    id="stock"
-                    name="stock"
-                    type="number"
-                    value={formData.stock}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
-                  />
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="stock" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Existencia (Stock)
+                    </label>
+                    <input
+                      id="stock"
+                      name="stock"
+                      type="number"
+                      value={formData.stock}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-800 focus:outline-none focus:border-slate-300"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="condition" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Estado de la Pieza
+                    </label>
+                    <select
+                      id="condition"
+                      name="condition"
+                      value={formData.condition}
+                      onChange={handleChange}
+                      className="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none cursor-pointer"
+                    >
+                      {conditions.map((cond) => (
+                        <option key={cond} value={cond}>{cond}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
+
                 <div>
-                  <label
-                    htmlFor="sku"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    SKU
+                  <label htmlFor="sku" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                    Código de Identificación (SKU)
                   </label>
                   <input
                     id="sku"
@@ -259,229 +325,113 @@ export default function EditarProductoPage() {
                     type="text"
                     value={formData.sku}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-mono font-medium text-slate-700 focus:outline-none focus:border-slate-300"
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor="condition"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    CONDICIÓN
-                  </label>
-                  <select
-                    id="condition"
-                    name="condition"
-                    value={formData.condition}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
-                  >
-                    {conditions.map((cond) => (
-                      <option key={cond} value={cond}>
-                        {cond}
-                      </option>
-                    ))}
-                  </select>
-                </div>
               </div>
-            </div>
 
-            {/* Categorización */}
-            <div className="bg-[var(--white)] rounded-3xl shadow-sm border border-[var(--lighter-gray)] p-6 md:p-8">
-              <h3 className="text-lg font-montserrat font-semibold text-[var(--black)] mb-6">
-                Categorización
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {/* Tarjeta: Categorización y Canales */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4">
+                <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                  Estructura de Catálogo
+                </h3>
+
                 <div>
-                  <label
-                    htmlFor="primaryCategory"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    CATEGORÍA PRINCIPAL
+                  <label htmlFor="primaryCategory" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                    Categoría de Indexación
                   </label>
                   <select
                     id="primaryCategory"
                     name="primaryCategory"
                     value={formData.primaryCategory}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
+                    className="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none cursor-pointer"
                   >
                     {categories.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
-                      </option>
+                      <option key={cat} value={cat}>{cat}</option>
                     ))}
                   </select>
                 </div>
+
                 <div>
-                  <label
-                    htmlFor="subCategory"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    SUBCATEGORÍA
-                  </label>
-                  <select
-                    id="subCategory"
-                    name="subCategory"
-                    value={formData.subCategory}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
-                  >
-                    {categories.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="visibility"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    VISIBILIDAD
+                  <label htmlFor="visibility" className="block text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                    Nivel de Privacidad
                   </label>
                   <select
                     id="visibility"
                     name="visibility"
                     value={formData.visibility}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
+                    className="w-full px-3 py-3 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 focus:outline-none cursor-pointer"
                   >
                     <option value="Público">Público</option>
                     <option value="Privado">Privado</option>
-                    <option value="No listado">No listado</option>
+                    <option value="No listado">No indexado</option>
                   </select>
-                  <p className="text-xs text-[var(--medium-gray)] mt-1 font-opensans">
-                    Visible para todos los compradores
+                  <p className="text-[11px] text-slate-400 mt-2 font-medium">
+                    📍 Visible e indexable en los resultados globales de búsqueda.
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Envío */}
-            <div className="bg-[var(--white)] rounded-3xl shadow-sm border border-[var(--lighter-gray)] p-6 md:p-8">
-              <h3 className="text-lg font-montserrat font-semibold text-[var(--black)] mb-2">
-                Envío
-              </h3>
-              <p className="text-sm text-[var(--medium-gray)] font-opensans mb-6">
-                Calcula los costos y tiempos de envío según la ubicación de tu almacén.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label
-                    htmlFor="standard"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    Estándar Terrestre
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--medium-gray)] font-opensans">
-                      $
-                    </span>
-                    <input
-                      id="standard"
-                      name="standard"
-                      type="number"
-                      step="0.01"
-                      value={formData.shipping.standard}
-                      onChange={handleShippingChange}
-                      className="w-full pl-8 pr-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
-                    />
-                  </div>
-                  <p className="text-xs text-[var(--medium-gray)] mt-1 font-opensans">Gratis</p>
-                </div>
-                <div>
-                  <label
-                    htmlFor="express"
-                    className="block text-xs font-plusjakarta font-semibold text-[var(--medium-gray)] uppercase tracking-wider mb-1.5"
-                  >
-                    Express Asegurado
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[var(--medium-gray)] font-opensans">
-                      $
-                    </span>
-                    <input
-                      id="express"
-                      name="express"
-                      type="number"
-                      step="0.01"
-                      value={formData.shipping.express}
-                      onChange={handleShippingChange}
-                      className="w-full pl-8 pr-4 py-2.5 bg-[var(--off-white)] border border-[var(--lighter-gray)] rounded-lg text-sm font-opensans text-[var(--black)] focus:outline-none focus:ring-2 focus:ring-[var(--gold)] focus:border-transparent transition"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+              {/* Tarjeta: Panel de Acciones Finales */}
+              <div className="bg-white rounded-2xl border border-slate-100 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-3">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex items-center justify-center gap-2 bg-[#1e293b] text-white w-full h-12 rounded-xl hover:bg-slate-800 transition text-sm font-medium shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <Save className="h-4 w-4" />
+                  {isSubmitting ? "Sincronizando..." : "Confirmar y Guardar"}
+                </button>
+                
+                <button
+                  type="button"
+                  className="flex items-center justify-center gap-2 border border-slate-200 bg-white w-full h-12 rounded-xl hover:bg-slate-50 transition text-sm font-medium text-slate-700"
+                >
+                  Vista Previa Local
+                </button>
 
-            {/* === Columna 2 - Acciones (Save + Preview) === */}
-            <div className="bg-[var(--white)] rounded-3xl shadow-sm border border-[var(--lighter-gray)] p-6 md:p-8 flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg font-montserrat font-semibold text-[var(--black)] mb-6">
-                  Acciones
-                </h3>
-                <div className="flex flex-col gap-3">
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="flex items-center justify-center gap-2 bg-[var(--black)] text-white px-8 h-12 rounded-xl hover:bg-[var(--black-light)] transition font-opensans font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed w-full"
-                  >
-                    <Save className="h-4 w-4" />
-                    {isSubmitting ? "Guardando..." : "Guardar Cambios"}
-                  </button>
+                <div className="pt-4 border-t border-slate-100">
                   <button
                     type="button"
-                    className="flex items-center justify-center gap-2 border border-[var(--lighter-gray)] px-8 h-12 rounded-xl bg-[var(--white)] hover:bg-[var(--off-white)] transition font-opensans text-sm text-[var(--black)] w-full"
+                    onClick={() => setShowDeleteModal(true)}
+                    className="flex items-center justify-center gap-2 w-full h-11 bg-red-50/60 hover:bg-red-50 border border-red-100 text-red-600 rounded-xl transition text-xs font-semibold"
                   >
-                    Vista Previa
+                    <Trash2 className="h-4 w-4" />
+                    Retirar Producto de la Venta
                   </button>
                 </div>
               </div>
-            </div>
 
-            {/* Eliminar Producto - Ocupa toda la fila */}
-            <div className="lg:col-span-2 bg-[var(--white)] rounded-3xl shadow-sm border border-[var(--lighter-gray)] p-6 md:p-8 flex flex-col items-center justify-center">
-              <button
-                type="button"
-                onClick={() => setShowDeleteModal(true)}
-                className="flex items-center gap-2 border border-red-200 px-8 h-12 rounded-xl bg-red-50 hover:bg-red-100 transition font-opensans text-sm text-red-600"
-              >
-                <Trash2 className="h-4 w-4" />
-                Eliminar Producto
-              </button>
-              <p className="text-xs text-[var(--medium-gray)] font-opensans mt-3">
-                ESTA ACCIÓN NO SE PUEDE DESHACER
-              </p>
             </div>
 
           </form>
         </div>
       </main>
 
-      {/* Modal de confirmación de eliminación */}
+      {/* Modal de Confirmación de Eliminación */}
       {showDeleteModal && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-[var(--white)] rounded-3xl shadow-xl max-w-md w-full p-6 md:p-8">
-            <h3 className="text-xl font-montserrat font-semibold text-[var(--black)] mb-2">
-              Eliminar Producto
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+          <div className="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 md:p-8 border border-slate-100">
+            <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              ¿Dar de baja esta publicación?
             </h3>
-            <p className="text-[var(--medium-gray)] font-opensans text-sm mb-6">
-              ¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.
+            <p className="text-slate-500 text-sm leading-relaxed mb-6">
+              Esta operación es irreversible. Los datos analíticos e historial de visualizaciones acumulados se purgarán por completo.
             </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="flex-1 px-4 py-2.5 border border-[var(--lighter-gray)] rounded-xl bg-[var(--white)] hover:bg-[var(--off-white)] transition font-opensans text-sm text-[var(--black)]"
+                className="flex-1 px-4 py-2.5 border border-slate-200 rounded-xl bg-white hover:bg-slate-50 transition text-sm font-medium text-slate-700"
               >
-                Cancelar
+                Abortar
               </button>
               <button
                 onClick={handleDelete}
-                className="flex-1 px-4 py-2.5 bg-red-600 text-white rounded-xl hover:bg-red-700 transition font-opensans text-sm font-medium"
+                className="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-xl transition text-sm font-medium"
               >
-                Eliminar
+                Eliminar Registro
               </button>
             </div>
           </div>

@@ -252,7 +252,7 @@ export default function ProductosPage() {
                                             STATUS
                                         </th>
                                         <th className="px-6 py-4 font-medium text-xs uppercase tracking-wider text-right">
-                                            AC
+                                            Acciones
                                         </th>
                                     </tr>
                                 </thead>
