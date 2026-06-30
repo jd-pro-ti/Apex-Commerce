@@ -12,9 +12,9 @@ export function NavbarAdmin() {
   const navLinks = [
     { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
     { href: "/dashboard/admin/usuarios", label: "Usuarios", icon: Users },
-    { href: "/admin/productos", label: "Productos", icon: ShoppingBag },
+    { href: "/dashboard/admin/productos", label: "Productos", icon: ShoppingBag },
     { href: "/admin/pedidos", label: "Pedidos", icon: Tag },
-    { href: "/admin/reportes", label: "Reportes", icon: BarChart3 },
+    { href: "/dashboard/admin/reportes", label: "Reportes", icon: BarChart3 },
     { href: "/admin/configuracion", label: "Configuración", icon: Settings },
   ];
 

@@ -1,48 +1,70 @@
 @import "tailwindcss";
 
+/* ============================================
+   PALETA DE COLORES APEX COMMERCE
+   ============================================ */
 :root {
-  /* Paleta de colores principal */
-  --black: #0a0a0a;
-  --black-light: #1a1a1a;
-  --dark-gray: #2a2a2a;
-  --medium-gray: #6b6b6b;
-  --light-gray: #a8a8a8;
-  --lighter-gray: #d4d4d4;
-  --off-white: #f5f5f0;
+  /* Colores principales */
+  --primary: #2C3B4D;
+  --primary-dark: #1B2632;
+  --secondary: #1B2632;
+  --tertiary: #FFB162;
+  --tertiary-dark: #e69a4a;
+  --neutral: #777777;
+  --neutral-light: #a0aec0;
+  --neutral-lighter: #cbd5e0;
+
+  /* Escala de grises derivada */
+  --black: #0b131d;
+  --black-light: #1B2632;     /* igual al secondary */
+  --dark-gray: #2C3B4D;       /* primary */
+  --medium-gray: #777777;     /* neutral */
+  --light-gray: #a0aec0;      /* neutral-light */
+  --lighter-gray: #e2e8f0;
+  --off-white: #f1f5f9;
   --white: #ffffff;
-  --gold: #c9a84c;
-  --gold-light: #dbb95c;
-  --gold-dark: #b8973a;
 
-  /* Escala tipográfica refinada en rem */
-  --font-size-xs: 0.75rem;    /* 12px */
-  --font-size-sm: 0.875rem;   /* 14px */
-  --font-size-base: 1rem;     /* 16px */
-  --font-size-lg: 1.125rem;   /* 18px */
-  --font-size-xl: 1.25rem;    /* 20px */
-  --font-size-2xl: 1.5rem;    /* 24px */
-  --font-size-3xl: 2rem;      /* 32px */
-  --font-size-4xl: 2.5rem;    /* 40px */
-  --font-size-5xl: 3.125rem;  /* 50px */
-  --font-size-6xl: 3.75rem;   /* 60px */
-  --font-size-7xl: 4.5rem;    /* 72px */
-  --font-size-8xl: 5.5rem;    /* 88px */
+  /* Colores para estados (se mantienen) */
+  --gold: #FFB162;
+  --gold-light: #ffb884;
+  --gold-dark: #e08b4c;
 
-  /* Espaciados en rem */
-  --spacing-xs: 0.5rem;      /* 8px */
-  --spacing-sm: 1rem;        /* 16px */
-  --spacing-md: 1.5rem;      /* 24px */
-  --spacing-lg: 2rem;        /* 32px */
-  --spacing-xl: 3rem;        /* 48px */
-  --spacing-2xl: 4rem;       /* 64px */
-  --spacing-3xl: 5rem;       /* 80px */
-  --spacing-4xl: 6rem;       /* 96px */
-  --spacing-5xl: 8rem;       /* 128px */
+  /* Tipografías */
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-opensans: 'Open Sans', sans-serif;
+  --font-plusjakarta: 'Plus Jakarta Sans', sans-serif;
+
+  /* Escala tipográfica (se mantiene igual) */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.125rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-size-8xl: 5.5rem;
+
+  /* Espaciados (se mantienen igual) */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 5rem;
+  --spacing-4xl: 6rem;
+  --spacing-5xl: 8rem;
 }
 
-
+/* ============================================
+   ESTILOS GLOBALES
+   ============================================ */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-opensans);
   background-color: var(--white);
   color: var(--black-light);
   font-weight: 300;
@@ -52,8 +74,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Tipografía refinada */
+/* Tipografía refinada con Montserrat para títulos */
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat);
   font-weight: 300;
   letter-spacing: -0.02em;
   line-height: 1.1;
@@ -99,7 +122,9 @@ a {
   transition: color 0.3s ease;
 }
 
-/* Contenedor principal - 90% de ancho */
+/* ============================================
+   CONTENEDORES
+   ============================================ */
 .container-premium {
   width: 90%;
   max-width: 1440px;
@@ -125,7 +150,6 @@ a {
   }
 }
 
-/* Contenedor full width con padding */
 .container-full {
   width: 100%;
   padding: 0 var(--spacing-lg);
@@ -143,18 +167,20 @@ a {
   }
 }
 
-/* Líneas decorativas */
+/* ============================================
+   DIVISORES DECORATIVOS
+   ============================================ */
 .divider-gold {
   width: 3rem;
   height: 1px;
-  background: var(--gold);
+  background: var(--tertiary);
   margin: var(--spacing-md) 0;
 }
 
 .divider-gold-center {
   width: 3rem;
   height: 1px;
-  background: var(--gold);
+  background: var(--tertiary);
   margin: var(--spacing-md) auto;
 }
 
@@ -165,18 +191,30 @@ a {
   margin: var(--spacing-lg) 0;
 }
 
-/* Texto dorado */
+/* ============================================
+   UTILIDADES DE COLOR (alias semánticos)
+   ============================================ */
 .text-gold {
-  color: var(--gold);
+  color: var(--tertiary);
 }
 
 .text-gold-hover:hover {
-  color: var(--gold);
+  color: var(--tertiary);
 }
 
-/* Efectos de hover */
+.bg-gold {
+  background-color: var(--tertiary);
+}
+
+.border-gold {
+  border-color: var(--tertiary);
+}
+
+/* ============================================
+   EFECTOS DE HOVER
+   ============================================ */
 .hover-lift {
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
               box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -190,10 +228,12 @@ a {
 }
 
 .hover-gold:hover {
-  color: var(--gold);
+  color: var(--tertiary);
 }
 
-/* Animaciones */
+/* ============================================
+   ANIMACIONES
+   ============================================ */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -259,7 +299,9 @@ a {
   opacity: 0;
 }
 
-/* Scrollbar elegante */
+/* ============================================
+   SCROLLBAR ELEGANTE
+   ============================================ */
 ::-webkit-scrollbar {
   width: 0.375rem;
 }
@@ -269,21 +311,25 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gold);
+  background: var(--tertiary);
   border-radius: 0.1875rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-dark);
+  background: var(--tertiary-dark);
 }
 
-/* Selection */
+/* ============================================
+   SELECTION
+   ============================================ */
 ::selection {
-  background: var(--gold);
+  background: var(--tertiary);
   color: var(--white);
 }
 
-/* Utilidades de espaciado */
+/* ============================================
+   UTILIDADES DE ESPACIADO
+   ============================================ */
 .section-padding {
   padding: var(--spacing-4xl) 0;
 }
@@ -302,12 +348,16 @@ a {
   padding: var(--spacing-5xl) 0;
 }
 
-/* Utilidades de grid */
+/* ============================================
+   UTILIDADES DE GRID
+   ============================================ */
 .grid-gap-lg {
   gap: var(--spacing-xl);
 }
 
-/* Utilidades de texto */
+/* ============================================
+   UTILIDADES DE TEXTO
+   ============================================ */
 .text-balance {
   text-wrap: balance;
 }
@@ -316,16 +366,28 @@ a {
   text-wrap: pretty;
 }
 
-/* Utilidades de border */
-.border-gold {
-  border-color: var(--gold);
-}
-
-/* Utilidades de background */
+/* ============================================
+   UTILIDADES DE BACKGROUND
+   ============================================ */
 .bg-off-white {
   background-color: var(--off-white);
 }
 
 .bg-black-light {
   background-color: var(--black-light);
+}
+
+/* ============================================
+   CLASE PARA TIPOGRAFÍAS (por si se usan en Tailwind)
+   ============================================ */
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+.font-opensans {
+  font-family: var(--font-opensans);
+}
+
+.font-plusjakarta {
+  font-family: var(--font-plusjakarta);
 }

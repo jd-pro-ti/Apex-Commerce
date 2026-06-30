@@ -1,11 +1,26 @@
-import { Inter } from "next/font/google";
+import { Montserrat, Open_Sans, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 
-const inter = Inter({ 
+const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "500"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
+  variable: "--font-montserrat",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+  variable: "--font-open-sans",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-plus-jakarta",
 });
 
 export const metadata = {
@@ -16,7 +31,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body
+        className={`${montserrat.variable} ${openSans.variable} ${plusJakarta.variable} font-body antialiased`}
+      >
         <AuthProvider>
           {children}
         </AuthProvider>

@@ -285,5 +285,4 @@ const pedidosCliente = () => {
     </div>
   )
 }
-
 export default pedidosCliente

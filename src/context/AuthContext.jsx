@@ -8,10 +8,11 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    // Cargar sesión del localStorage
+    setMounted(true);
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
       setUser(JSON.parse(storedUser));
@@ -26,11 +27,10 @@ export function AuthProvider({ children }) {
       email: `${role}@apexcommerce.com`,
       role: role,
     };
-    
+
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
-    
-    // Redirigir según el rol
+
     if (role === "admin") {
       router.push("/dashboard/admin");
     } else if (role === "vendedor") {
@@ -47,7 +47,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading, mounted, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
