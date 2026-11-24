@@ -30,6 +30,11 @@ export default function CheckoutPage() {
               Completa la información para confirmar tu pedido.
             </p>
 
+          <p className="mt-4 rounded-xl border border-[#c9a84c] bg-[#fffaf0] p-4 text-sm text-gray-800">
+            Este sitio es un proyecto escolar de demostración. No cobramos ni vendemos
+            los productos mostrados; los precios y el proceso de compra son ilustrativos.
+          </p>
+
           </div>
 
           {/* Barra de progreso */}

@@ -276,7 +276,7 @@ const pedidosCliente = () => {
             </p>
             <div className="flex flex-wrap justify-center gap-6 mt-4 md:mt-0">
               <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Privacy Policy</a>
-              <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Terms of Service</a>
+              <Link href="/condiciones" className="text-sm text-gray-500 hover:text-gray-900">Términos y condiciones</Link>
               <a href="#" className="text-sm text-gray-500 hover:text-gray-900">Accessibility</a>
             </div>
           </div>

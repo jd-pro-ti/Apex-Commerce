@@ -7,7 +7,7 @@ export function Footer() {
   const footerLinks = {
     Empresa: ["Sostenibilidad", "Ética", "Prensa"],
     Asistencia: ["Envío", "Devoluciones", "Conserje"],
-    "Aviso legal": ["Privacidad", "Condiciones", "Cookies"],
+    "Aviso legal": ["Privacidad", "Términos y condiciones", "Cookies"],
   };
 
   return (
@@ -20,8 +20,8 @@ export function Footer() {
               APEX<span className="text-[#c9a84c]">COMMERCE</span>
             </h3>
             <p className="text-sm font-light leading-relaxed">
-              Seleccionar los artículos de lujo más excepcionales del mundo para un
-              público internacional de coleccionistas exigentes.
+              Este sitio es un proyecto escolar de demostración. No cobramos ni
+              vendemos los productos que aparecen en las imágenes.
             </p>
           </div>
 
@@ -36,7 +36,7 @@ export function Footer() {
                   {links.map((link) => (
                     <li key={link}>
                       <Link
-                        href={`/${link.toLowerCase()}`}
+                        href={link === "Términos y condiciones" ? "/condiciones" : `/${link.toLowerCase()}`}
                         className="hover:text-white transition-colors"
                       >
                         {link}

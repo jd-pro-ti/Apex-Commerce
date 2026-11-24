@@ -195,7 +195,7 @@ const DetallePedido = () => {
               <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">Company</h3>
               <ul className="mt-4 space-y-2">
                 <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Sustainability Policy</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Terms</a></li>
+                <li><Link href="/condiciones" className="text-sm text-gray-600 hover:text-gray-900">Términos y condiciones</Link></li>
               </ul>
             </div>
             <div>
